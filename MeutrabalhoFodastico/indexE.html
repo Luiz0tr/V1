@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/comprar.css">
+    <title>Interface de Vendas - Tema Escuro</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2c2c2c; /* Cinza escuro padrão */
+            color: #e0e0e0; /* Texto claro padrão */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #1a1a1a; /* Cinza muito escuro */
+            padding: 10px;
+            position: relative;
+        }
+
+        .show-menu {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #e0e0e0; /* Cor clara para contraste */
+            cursor: pointer;
+        }
+
+        /* Menu */
+        .nav-menu {
+            display: none;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 5px 0;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e0e0e0; /* Cor clara para contraste */
+        }
+
+        /* Conteúdo Principal */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content img {
+            max-width: 150px;
+        }
+
+        .image-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #product-image {
+            max-width: 300px; /* Tamanho da imagem principal */
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Sombra mais intensa */
+        }
+
+        button.next {
+            background-color: #1a1a1a; /* Cor do botão */
+            border: none;
+            color: #e0e0e0; /* Cor clara para contraste */
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button.next:hover {
+            background-color: #333333; /* Cor ao passar o mouse */
+        }
+
+        .description {
+            margin-top: 10px;
+        }
+
+        /* Seção de Imagens com Scroll */
+        .image-gallery {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-gallery h2 {
+            margin-bottom: 20px;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+        }
+
+        .gallery-container img {
+            max-width: 150px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #1a1a1a; /* Cinza muito escuro */
+            color: #e0e0e0; /* Cor clara para contraste */
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com Navbar -->
+    <header>
+        <nav class="navbar">
+            <button class="show-menu" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Contact.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="content">
+        <img src="images/logo_2.png" alt="">
+        <p><strong>MAIN KITS</strong></p>
+        <div class="image-box">
+            <img id="product-image" src="images/lookbook_cover.jpg" alt="Produto" />
+            <button class="next" onclick="nextImage()">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Seção de Imagens com Scroll -->
+    <div class="image-gallery">
+        <h2>Galeria de Imagens</h2>
+        <div class="gallery-container">
+            <img src="images/1_28.png" alt="Imagem 1" />
+            <img src="images/1_37.png" alt="Imagem 2" />
+            <img src="images/4_11.png" alt="Imagem 3" />
+            <img src="images/4_13.png" alt="Imagem 4" />
+            <img src="images/azul 1_821x798.jpeg" alt="Imagem 5" />
+            <img src="images/azul 3_660x798.jpeg" alt="Imagem 1" />
+            <img src="images/azul_767x798.jpeg" alt="Imagem 3" />
+            <img src="images/azul 4_626x798.jpeg" alt="Imagem 4" />
+            <img src="images/marrom_resized.jpg" alt="Imagem 5" />
+            <img src="images/marrom 2.jpg" alt="Imagem 4" />
+            <img src="images/marrom 3.jpg" alt="Imagem 5" />
+            <img src="images/marrom 4.jpg" alt="Imagem 4" />
+            <img src="images/marrom 5.jpg" alt="Imagem 5" />
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Desenvolvido por Luiz Gustavo F Otero e [Nome dos Alunos]</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("nav-menu");
+            menu.classList.toggle("active");
+        }
+
+        const images = [
+            "images/lookbook_cover.jpg", 
+            "images/FFF.jpg", 
+            "images/banner_lookbook-2.png"
+        ];
+
+        const colorPalettes = [
+            { body: "#3a0a0a", navbar: "#3a0a0a", button: "#3a0a0a", gallery: "#3a0a0a" }, // Vermelho bem escuro
+            { body: "#003366", navbar: "#003366", button: "#003366", gallery: "#003366" }, // Azul
+            { body: "#4e2a1e", navbar: "#4e2a1e", button: "#4e2a1e", gallery: "#4e2a1e" }  // Marrom
+        ];
+
+        let currentImageIndex = 0;
+        let currentColorIndex = 0;
+
+        function showImage(index) {
+            const imageElement = document.getElementById("product-image");
+            imageElement.src = images[index];
+
+            // Atualiza as cores
+            const colors = colorPalettes[currentColorIndex];
+            document.body.style.backgroundColor = colors.body;
+            document.querySelector('.navbar').style.backgroundColor = colors.navbar;
+            document.querySelector('.next').style.backgroundColor = colors.button;
+            document.querySelector('.gallery-container').style.backgroundColor = colors.gallery;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
+            currentColorIndex = (currentColorIndex === colorPalettes.length - 1) ? 0 : currentColorIndex + 1;
+            showImage(currentImageIndex);
+        }
+
+        // Inicializar com a primeira imagem e cores
+        showImage(currentImageIndex);
+    </script>
+</body>
+</html>
